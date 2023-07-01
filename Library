@@ -43,7 +43,7 @@ function Dragify(obj)
 						con:Disconnect();
 					end;
                 end);
-                input.Changed:Connect(func)
+                input.Changed:Connect(function()
     			    if input.UserInputState == Enum.UserInputState.End then
 					    isdragging = false;
 				    end;
@@ -122,8 +122,8 @@ function library:Window(name)
     local Header = Instance.new("Frame")
     Header.Name = "Header"
     Header.Parent = UiWindow
-    Header.BackgroundColor3 = Color3.fromRGB(255,0,0)
-    Header.BorderColor3 = Color3.fromRGB(255,0,0)
+    Header.BackgroundColor3 = Color3.fromRGB(0,0,0)
+    Header.BorderColor3 = Color3.fromRGB(0,0,0)
     Header.Position = UDim2.new(0, 0, -0.0202544238, 0)
     Header.Size = UDim2.new(0, 207, 0, 26)
     Header.ZIndex = 5 + zindex
