@@ -10,8 +10,8 @@ local destroyed
 
 local colorPickers = {}
 
-if game.CoreGui:FindFirstChild('TurtleUiLib') then
-    game.CoreGui:FindFirstChild('TurtleUiLib'):Destroy()
+if game.CoreGui:FindFirstChild('NSBTLib') then
+    game.CoreGui:FindFirstChild('NSBTLib'):Destroy()
     destroyed = true
 end
 
@@ -53,7 +53,6 @@ function Dragify(obj)
 end)
 end
 
--- Instances:
 
 local function protect_gui(obj) 
 if destroyed then
@@ -69,9 +68,9 @@ else
 obj.Parent = game.CoreGui
 end
 end
-local TurtleUiLib = Instance.new("ScreenGui")
+local NSBTLib = Instance.new("ScreenGui")
 
-TurtleUiLib.Name = "TurtleUiLib"
+NSBTLib.Name = "NSBTLib"
 
 protect_gui(TurtleUiLib)
 
@@ -82,13 +81,13 @@ local uis = game:GetService("UserInputService")
 local keybindConnection
 
 function library:Destroy()
-    TurtleUiLib:Destroy()
+    NSBTLib:Destroy()
     if keybindConnection then
         keybindConnection:Disconnect()
     end
 end
 function library:Hide()
-   TurtleUiLib.Enabled = not TurtleUiLib.Enabled
+   NSBTLib.Enabled = not NSBTLib.Enabled
 end	
 
 function library:Keybind(key)
@@ -96,7 +95,7 @@ function library:Keybind(key)
 
     keybindConnection = uis.InputBegan:Connect(function(input, gp)
         if not gp and input.KeyCode == Enum.KeyCode[key] then
-            TurtleUiLib.Enabled = not TurtleUiLib.Enabled
+            NSBTLib.Enabled = not NSBTLib.Enabled
         end
     end)
 end
@@ -108,7 +107,7 @@ function library:Window(name)
     local UiWindow = Instance.new("Frame")
 
     UiWindow.Name = "UiWindow"
-    UiWindow.Parent = TurtleUiLib
+    UiWindow.Parent = NSBTLib
     UiWindow.BackgroundColor3 = Color3.fromRGB(0, 151, 230)
     UiWindow.BorderColor3 = Color3.fromRGB(0, 151, 230)
     UiWindow.Position = UDim2.new(0, xOffset, 0, 20)
@@ -122,8 +121,8 @@ function library:Window(name)
     local Header = Instance.new("Frame")
     Header.Name = "Header"
     Header.Parent = UiWindow
-    Header.BackgroundColor3 = Color3.fromRGB(0, 168, 255)
-    Header.BorderColor3 = Color3.fromRGB(0, 168, 255)
+    Header.BackgroundColor3 = Color3.fromRGB(0, 0,0)
+    Header.BorderColor3 = Color3.fromRGB(255,0,0)
     Header.Position = UDim2.new(0, 0, -0.0202544238, 0)
     Header.Size = UDim2.new(0, 207, 0, 26)
     Header.ZIndex = 5 + zindex
